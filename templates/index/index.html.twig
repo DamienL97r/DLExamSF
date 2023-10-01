@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+
+    <h1>Annuaire d'entreprise</h1>
+
+    <div class="d-flex flex-wrap">
+    
+        {% for user in users %}
+            <div class="card col-4">
+                <div class="card-body">
+                    <h3 class="card-title">{{ user.username }}</h3>
+                    <p class="card-text">Prénom : {{ user.firstname }}</p>
+                    <p class="card-text">Nom : {{ user.lastname }}</p>
+                    <p class="card-text">E-mail : {{ user.email }}</p>
+                    <a href="{{ path('app_index_item', {'id': user.id}) }}">Voir ce profile</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

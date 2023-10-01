@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+
+    <h1>Annuaire d'entreprise</h1>
+
+
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Nom d'utilisateur : {{ user.username }}</h3>
+            <p class="card-text">Prénom : {{ user.firstname }}</p>
+            <p class="card-text">Nom : {{ user.lastname }}</p>
+            <p class="card-text">E-mail : {{ user.email }}</p>
+        </div>
+    </div>
+
+    <a href="{{ path('app_index') }}"><button class="btn btn-primary">Retour à l'accueil</button></a>
+
+{% endblock %}

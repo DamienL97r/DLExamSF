@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Tous les employés</h1>
+
+    <a class="nav-link" href="{{path('app_register')}}">
+        <button class="btn btn-primary">Ajouter un utilisateur</button>
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Firstname</th>
+                
+                <th>Lastname</th>
+                <th>Contract type</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstname }}</td>
+                
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.contractType }}</td>
+                <td>{{ user.image }}</td>
+                <td>
+                    <a href="{{ path('app_user_crud_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_user_crud_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun résultat.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
